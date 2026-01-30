@@ -1,0 +1,46 @@
+<!doctype html>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="grid.css" />
+
+<html>
+  <head>
+    <title>Audio Player - Grid View</title>
+    <script src="grid.js" defer></script>
+  </head>
+  <body>
+    <div class="backdrop">
+      <div class="container">
+        <div class="grid">
+          <div class="song1" onclick="playSong1()">
+            <p id="gridTitle">Mayonaise</p>
+            <p id="gridArtist">The Smashing Pumpkins</p>
+            <audio id="audio1" src="media/mayonaise.mp3"></audio>
+          </div>
+          <div class="song2" onclick="playsong2()">
+            <p id="gridTitle">Daisy Lady</p>
+            <p id="gridArtist">Tir na nÓg</p>
+            <audio id="audio2" src="media/daisylady.mp3"></audio>
+          </div>
+          <div class="song3" onclick="playsong3()">
+            <p id="gridTitle">From The Morning</p>
+            <p id="gridArtist">Nick Drake</p>
+            <audio id="audio3" src="media/fromthemorning.mp3"></audio>
+          </div>
+          <div class="song4" onclick="playsong4()">
+            <p id="gridTitle">I Think You Were In My Profile Picture Once</p>
+            <p id="gridArtist">Modern Baseball</p>
+            <audio id="audio4" src="media/profilepicture.mp3"></audio>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="navBar">
+      <img src="media/blake.png" id="smallArt" />
+      <div class="nowPlaying">
+        <p id="title">Song Title</p>
+        <p id="artist">Artist</p>
+      </div>
+    </div>
+  </body>
+</html>
