@@ -61,7 +61,7 @@ It **won't**:
 
 - Tell you if a change was made to repo by another person
 
-To check if others made pushes, run 'git fetch' and then run status.
+To check if others made pushes (changes), run 'git fetch' and then run status.
 
 If the status command does nothing, that means it doesn't detect a repo, and you need to run this command:
 
