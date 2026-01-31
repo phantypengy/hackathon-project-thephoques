@@ -1,10 +1,9 @@
 # How to use git !!!
 
 Making this because I couldn't find a proper guide online that didn't already assume
-you know the basics which was VERY annoying - I had to use ChatGPT just to learn these
-basics ...
+you know the basics which was VERY annoying - so I decided to make this.
 
-Please do use git because it will make our lives _so much_ easier
+**This guide assumes you're using VSCode.**
 
 ## Installing git + how to use
 
@@ -32,7 +31,7 @@ Downloading a repo grom GitHub is known as **cloning**, it'll download the repo 
 To do this, open your system terminal and type:
 
 ```
-git clone https://github.com/phantypengy/hackathon-project-thephoques
+git clone <link to repo>
 ```
 
 If you have no folder open in VSCode, you can also clone a repo by pressing the "Clone a repository" button in the explorer
@@ -47,7 +46,7 @@ Now that you've set this all up, you should be ready to go!
 To make sure git is working, open the VSCode terminal with Ctrl + ` and type these commands:
 
 ```
-cd hackathon-project-thephoques
+cd <name of repo folder>
 
 git status
 ```
@@ -57,6 +56,12 @@ The status command should:
 - Tell you which branch you're on (should be main)
 - If you're up to date with main
 - If there any untracked files (basically files you've updated / added that aren't on the GitHub)
+
+It **won't**:
+
+- Tell you if a change was made to repo by another person
+
+To check if others made pushes, run 'git fetch' and then run status.
 
 If the status command does nothing, that means it doesn't detect a repo, and you need to run this command:
 
@@ -82,7 +87,7 @@ git pull --rebase
 # this will download any changes to the files
 
 # you can skip doing status and fetch if you just run pull,
-# fetch and status will just show you if you're behind
+# fetch and status will just show you if you're behind main
 ```
 
 You should **ALWAYS** pull before making changes to avoid any conflicts.
@@ -108,13 +113,13 @@ git add .
 The . will add all untracked files to the commit. If you want to only add specific files, replace the . with
 the file names.
 
-Once you've run add, you will need to add a commit message. This is done like so:
+Once you've run 'git add', you will need to add a commit message. This is done like so:
 
 ```
 git commit -m "Example message"
 ```
 
-If you used "git add .", the message will be attached to every file. If you want separated message for each file,
+If you used 'git add .', the message will be attached to every file. If you want separate message for each file,
 you'll have to add the files individually.
 
 For example, let's say I edited script.js and style.css, but want different messages for the commit. I'd have to
@@ -150,7 +155,7 @@ cd hackathon-project-thephoques
 # only necessary if you're not already in the directory
 
 git pull --rebase
-# will download any changes we've pushed to the repo
+# will download any changes other team members pushed to the repo
 # if there are no changes, this will do nothing
 
 
@@ -171,3 +176,5 @@ git push
 
 # and that's it!
 ```
+
+Sorry if this guide is confusing, I'm not the *greatest* at things like this........
