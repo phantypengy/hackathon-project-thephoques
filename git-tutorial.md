@@ -274,4 +274,4 @@ git push
 
 Sorry if this guide is confusing, I'm not the _greatest_ at things like this........
 
-blahr blahr blahr
+gosh dang it i made a mistake!
