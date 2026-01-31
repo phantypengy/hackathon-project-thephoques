@@ -217,7 +217,7 @@ This will show previous commits, along with:
 Once you have the commit hash copied, you can exit the log with Ctrl + Z.
 
 ```
-git revert <commit-hash> -m "commit message"
+git revert <commit-hash>
 ```
 
 This will create a new commit that undoes the changes you made.
