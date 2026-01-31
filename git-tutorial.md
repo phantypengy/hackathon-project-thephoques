@@ -130,7 +130,7 @@ git add script.js
 git commit -m "Fixed script error on line 43"
 
 git add style.css
-git commit -m "Fixed div alignment colour"
+git commit -m "Fixed div alignment + colour"
 ```
 
 Once you've committed every file you want to add to the repo, you can use the 'push' command to upload your changes
