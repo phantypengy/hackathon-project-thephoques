@@ -142,6 +142,44 @@ git push
 
 That should upload your changes to the GitHub repo, and let the others download your changes.
 
+## Branches
+
+Branches are a very useful tool for when working in a team. Creating a branch allows you to make and push changes to the repo
+without affecting the main release branch. This is _especially_ useful when working in a team, as it allows for multiple people
+to work on something without conflicting.
+
+To create a branch, you simply use these commands:
+
+```
+git branch branch-name
+# this will create a branch - be sure to replace 'branch-name' with whatever you want to name your branch
+
+git checkout branch-name
+# this will switch to the branch - so your pushes won't be put on main, they'll be put on the branch
+```
+
+When you create a branch for the first time and try to push a change, it'll show you an error talking about
+no upstream - to fix this you can just use this command:
+
+```
+git config --global push.autoSetupRemote true
+```
+
+This will make sure all future branches don't return the same error.
+
+Once you've used 'git checkout' to swap to the branch you want to work in, you can use add, commit and push as normal.
+
+On the GitHub website, you can view different branches via a drop-down menu right under the name of the repo - by default
+it'll be set to main. Choosing a different branch lets you view the modified code and - more importantly - create a pull request.
+
+### Pull Requests
+
+A pull request is a request to merge the branch and main. Once a pull request is made, it'll appear in the pull requests tab
+on GitHub.
+
+On this page, GitHub will check if merging is possible, show all changes / deletions made, and allow all collaborators to comment,
+request changes and approve changes. Once decided, you can
+
 ## Order of operations
 
 This is just a step-by-step of what you should do when logging on for the first time each day - before making any changes.
