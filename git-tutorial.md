@@ -119,6 +119,7 @@ Once you've run 'git add', you will need to add a commit message. This is done l
 git commit -m "Example message"
 ```
 
+Make sure your messages are short but descriptive.
 If you used 'git add .', the message will be attached to every file. If you want separate message for each file,
 you'll have to add the files individually.
 
@@ -151,10 +152,10 @@ to work on something without conflicting.
 To create a branch, you simply use these commands:
 
 ```
-git branch branch-name
-# this will create a branch - be sure to replace 'branch-name' with whatever you want to name your branch
+git branch <branch-name>
+# this will create a branch - be sure to replace <branch-name> with whatever you want to name your branch
 
-git switch branch-name
+git switch <branch-name>
 # this will switch to the branch - so your pushes won't be put on main, they'll be put on the branch
 ```
 
@@ -183,16 +184,49 @@ request, which keeps any changes in the branch and leaves main untouched.
 
 This, as I'm sure you can tell, is _EXTREMELY_ useful in teams.
 
-### Other commands
+### Useful branch commands
 
 ```
 git branch -a
 # lists all branches
 
-git checkout -b branch-name
+git checkout -b <branch-name>
 # creates a new branch and switches to it immediately
 
+git branch -m <new-name>
+# changes the name of an existing branch
+```
 
+## Using commits as 'save points'
+
+You can always revert back to a previous commit.
+
+To do so, you'll have to find the hash of the commit:
+
+```
+git log
+```
+
+This will show previous commits, along with:
+
+- The hash (will appear as a long string of letters and numbers after the word commit)
+- The author
+- The date
+- The message
+
+Once you have the commit hash copied, you can exit the log with Ctrl + Z.
+
+```
+git revert <commit-hash> -m "commit message"
+```
+
+This will create a new commit that undoes the changes you made.
+
+**NOTE:** You do _not_ need to push in order to use commits as save points - just add and commit and it'll work.
+
+For example:
+When doing multiple tasks and you've finished one, before moving on add and commit your changes but _don't push them_.
+Now, if needed, you can revert to that commit.
 
 ## Order of operations
 
@@ -200,7 +234,7 @@ This is just a step-by-step of what you should do when logging on for the first 
 
 In VSCode, open the terminal with Ctrl + `
 
-Run these commands:
+Follow this order of operations:
 
 ```
 
@@ -239,4 +273,3 @@ git push
 ```
 
 Sorry if this guide is confusing, I'm not the _greatest_ at things like this........
-```
