@@ -1,8 +1,8 @@
 # hackathon-project
 
-# The Phoques
+## The Phoques
 
-Team: Dominik, Sarah, Finnán
+Team members: Dominik, Sarah, Finnán
 
 ## Theme chosen: Old but Gold
 
