@@ -23,6 +23,7 @@ html {
 
 .header-top {
   width: 100%;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
 .header-bottom {
@@ -31,6 +32,8 @@ html {
 
 .navbar {
   display: flex;
+  border: none;
+  margin-bottom: 2px;
 }
 
 .button {
@@ -53,26 +56,30 @@ html {
 }
 
 .searchbar {
-  background-color: rgb(225, 225, 225);
+  background-color: rgb(240, 240, 240);
   width: 500px;
+  border: solid 2px;
+  border-left: none;
+}
+
+.searchbar:focus {
+  outline: none;
 }
 
 .searchicon {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  background-color: rgb(93, 93, 240);
-  border: solid;
-  box-shadow: black 1px 1px;
-  border-left: none;
+  background-color: rgb(240, 240, 240);
+  border: solid 2px;
   min-width: 25px;
-  margin-left: 1px;
+  margin-left: 2px;
+  border-right: none;
 }
 
 .searchicon:hover {
   cursor: pointer;
-  background-color: rgb(37, 37, 209);
+  background-color: rgb(225, 225, 225);
 }
 
 .bar {
@@ -117,13 +124,13 @@ marquee {
 .videoGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
   margin-top: 5px;
 }
 
 .video {
   flex: 1 1 300px;
-  max-width: 360px;
+  max-width: 335px;
   width: 300px;
   background-color: white;
   overflow: auto;
