@@ -11,6 +11,7 @@ html {
 }
 
 .header {
+  background-color: white;
   position: sticky;
   top: 0;
   display: flex;
@@ -67,6 +68,13 @@ marquee {
   margin-right: 2px;
 }
 
+.body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .sidebar {
   width: 102px;
   height: 100%;
@@ -74,4 +82,68 @@ marquee {
   border: solid;
   display: flex;
   flex-wrap: wrap;
+  border-right: solid 2px;
+  box-shadow: rgba(0, 0, 0, 0.5) 1px 1px;
+}
+
+.content {
+  margin-left: 5px;
+}
+
+.videoGrid {
+  /* grid container for videos - the full grid containing all videos */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 5px;
+}
+
+.video {
+  /* individual video container - contains thumbnail, title, and channel name */
+  flex: 1 1 300px;
+  max-width: 360px;
+  width: 300px;
+  border-radius: 8px;
+  transition: background-color 0.5s ease;
+  background-color: rgba(93, 93, 240, 0.7);
+}
+
+.video:hover {
+  cursor: pointer;
+}
+
+.videoTitle,
+.channelName {
+  padding-left: 10px;
+}
+
+.channelName {
+  transition: color 0.3s;
+}
+
+.channelName:hover {
+  /* hover effect for channel name like on YouTube */
+  color: rgb(200, 200, 200);
+}
+
+.thumbnail {
+  /* video thumbnail container */
+  width: 100%;
+  height: 170px;
+  background-color: grey;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.thumbnail img {
+  /* makes sure the thumbnail image fills the container and doesn't spill out */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-info {
+  /* container for video title and channel name */
+  padding: 8px;
 }
