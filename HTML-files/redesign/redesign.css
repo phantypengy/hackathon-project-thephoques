@@ -52,6 +52,29 @@ html {
   border-color: black;
 }
 
+.searchbar {
+  background-color: rgb(225, 225, 225);
+  width: 500px;
+}
+
+.searchicon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(93, 93, 240);
+  border: solid;
+  box-shadow: black 1px 1px;
+  border-left: none;
+  min-width: 25px;
+  margin-left: 1px;
+}
+
+.searchicon:hover {
+  cursor: pointer;
+  background-color: rgb(37, 37, 209);
+}
+
 .bar {
   width: 100%;
   background-color: rgb(93, 93, 240);
@@ -76,18 +99,19 @@ marquee {
 }
 
 .sidebar {
+  display: table-column;
+  overflow-y: auto;
   width: 102px;
   height: 100%;
   background-color: rgb(93, 93, 240);
   border: solid;
-  display: flex;
-  flex-wrap: wrap;
   border-right: solid 2px;
   box-shadow: rgba(0, 0, 0, 0.5) 1px 1px;
 }
 
 .content {
   margin-left: 5px;
+  flex: 1;
 }
 
 .videoGrid {
@@ -101,12 +125,15 @@ marquee {
   flex: 1 1 300px;
   max-width: 360px;
   width: 300px;
-  transition: background-color 0.5s ease;
-  background-color: rgba(93, 93, 240, 0.7);
+  background-color: white;
+  overflow: auto;
+  box-shadow: black 2px 2px 2px 2px;
 }
 
 .video:hover {
   cursor: pointer;
+  text-decoration: underline;
+  background-color: rgb(240, 240, 240);
 }
 
 .videoTitle,
@@ -114,19 +141,13 @@ marquee {
   padding-left: 10px;
 }
 
-.channelName {
-  transition: color 0.3s;
-}
-
-.channelName:hover {
-  color: rgb(200, 200, 200);
-}
-
 .thumbnail {
-  width: 100%;
+  width: 90%;
   height: 170px;
   background-color: grey;
   overflow: hidden;
+  margin-left: 15px;
+  margin-top: 5px;
 }
 
 .thumbnail img {
