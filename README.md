@@ -8,7 +8,7 @@ Team members: Dominik, Sarah, Finnán
 
 Web server 3: Audio/Video streaming server
 
-We're making a video site similar to YouTube, with planned features being:
+We're making a video site similar to YouTube!!!
 
 
 
