@@ -1,0 +1,64 @@
+<!doctype html>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="redesign.css" />
+<html>
+  <head>
+    <title>Sealio - Upload</title>
+    <script src="upload.js" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="header-top">
+          <h1 class="title">Sealio</h1>
+        </div>
+        <div class="header-bottom">
+          <div class="navbar">
+            <div class="button">Home</div>
+            <div class="button">About</div>
+            <div class="button">Saved</div>
+            <div class="button" style="margin-right: 1px">Upload</div>
+            <div class="bar">
+              <marquee behavior="scroll" direction="left">
+                Welcome to Sealio!
+              </marquee>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="body">
+        <div class="content">
+          <div class="uploadContainer">
+            <div class="uploadWindow">
+              <h2>Upload your video here!</h2>
+
+              <!-- Drop zone -->
+              <div class="dropZone" id="dropZone">
+                <p>Drag and drop your video here</p>
+                <p>or</p>
+                <input type="file" id="fileInput" accept="video/*" hidden />
+                <label for="fileInput" class="button">Browse files</label>
+              </div>
+              <p id="selectedFile"></p>
+
+              <!-- Video details -->
+              <input type="text" id="title" placeholder="Title" />
+              <textarea
+                id="description"
+                placeholder="Description"
+                rows="4"
+              ></textarea>
+              <input type="file" id="thumbnailInput" accept="image/*" hidden />
+              <label for="thumbnailInput" class="button"
+                >Browse thumbnail</label
+              >
+              <p id="selectedThumbnail"></p>
+
+              <button onclick="uploadVideo()">Upload</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

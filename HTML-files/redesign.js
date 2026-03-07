@@ -2,7 +2,6 @@ async function loadVideos() {
   const response = await fetch("http://localhost:3000/videos");
   const videos = await response.json();
 
-  // Shuffle the videos array
   for (let i = videos.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [videos[i], videos[j]] = [videos[j], videos[i]];
@@ -14,10 +13,10 @@ async function loadVideos() {
   videos.forEach((video) => {
     const videoEl = document.createElement("div");
     videoEl.classList.add("video");
-    videoEl.dataset.src = video.video_url;
+    videoEl.dataset.src = `http://localhost:3000${video.video_url}`;
     videoEl.innerHTML = `
             <div class="thumbnail">
-                <img src="${video.thumbnail_url}" alt="Video Thumbnail" />
+                <img src="http://localhost:3000${video.thumbnail_url}" alt="Video Thumbnail" />
             </div>
             <div class="videoInfo">
                 <h4 class="videoTitle">${video.title}</h4>
@@ -27,7 +26,6 @@ async function loadVideos() {
     videoGrid.appendChild(videoEl);
   });
 
-  // Attach click listeners AFTER videos are added
   document.querySelectorAll(".video").forEach((video) => {
     video.addEventListener("click", () => {
       const src = video.dataset.src;
