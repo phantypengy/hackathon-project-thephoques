@@ -1,6 +1,6 @@
 # hackathon-project
 
-## The Phoques
+## Sealio
 
 Team members: Dominik, Sarah, Finnán
 
