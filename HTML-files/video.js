@@ -26,6 +26,9 @@ async function loadVideo() {
   document.title = `Sealio - ${video.title}`;
   document.getElementById("mainPlayer").src =
     `http://localhost:3000${video.video_url}`;
+  const player = document.getElementById("mainPlayer");
+  player.src = `http://localhost:3000${video.video_url}`;
+  player.play();
   document.getElementById("videoTitle").textContent = video.title;
   document.getElementById("videoUploader").textContent =
     `Uploaded by: ${video.username}`;

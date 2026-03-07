@@ -55,7 +55,13 @@ async function uploadVideo() {
 
   const data = await response.json();
   console.log("Video uploaded:", data);
-  alert("Video uploaded successfully!");
+  if (response.ok) {
+    alert("Video uploaded successfully!");
+    window.location.href = "redesign.html";
+  } else {
+    const data = await response.json();
+    alert(data.error);
+  }
 }
 
 async function checkLogin() {

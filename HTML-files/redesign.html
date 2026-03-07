@@ -39,7 +39,12 @@
             <div id="navUsername" class="navUsername"></div>
             <div class="button" onclick="logout()">Logout</div>
             <div onclick="searchItems()" class="searchicon">&#128269;</div>
-            <input type="search" class="searchbar" placeholder="Search..." />
+            <input
+              type="search"
+              class="searchbar"
+              placeholder="Search..."
+              onkeydown="if (event.key == 'Enter') searchItems();"
+            />
           </div>
         </div>
       </header>

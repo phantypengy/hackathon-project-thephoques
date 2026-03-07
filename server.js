@@ -230,3 +230,18 @@ app.post("/videos/:id/comments", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+// search
+app.get("/search", async (req, res) => {
+  const { q } = req.query;
+  const param = `%${q}%`;
+  try {
+    const result = await pool.query(
+      "SELECT * FROM videos WHERE LOWER(title) LIKE LOWER($1)",
+      [param],
+    );
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
