@@ -1,31 +1,47 @@
-let grid = document.querySelector(".videoGrid");
-let videos = Array.from(grid.children);
-//selecting the grid and making an array of its children (the video divs)
+async function loadVideos() {
+  const response = await fetch("http://localhost:3000/videos");
+  const videos = await response.json();
 
-document.addEventListener("DOMContentLoaded", () => {
-  function shuffle(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  } //randomizes the order of the array!!
+  // Shuffle the videos array
+  for (let i = videos.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [videos[i], videos[j]] = [videos[j], videos[i]];
+  }
 
-  shuffle(videos); //calls the shuffle function on the videos array
-  videos.forEach((video) => grid.appendChild(video));
-});
+  const videoGrid = document.querySelector(".videoGrid");
+  videoGrid.innerHTML = "";
+
+  videos.forEach((video) => {
+    const videoEl = document.createElement("div");
+    videoEl.classList.add("video");
+    videoEl.dataset.src = video.video_url;
+    videoEl.innerHTML = `
+            <div class="thumbnail">
+                <img src="${video.thumbnail_url}" alt="Video Thumbnail" />
+            </div>
+            <div class="videoInfo">
+                <h4 class="videoTitle">${video.title}</h4>
+                <p class="channelName">${video.username}</p>
+            </div>
+        `;
+    videoGrid.appendChild(videoEl);
+  });
+
+  // Attach click listeners AFTER videos are added
+  document.querySelectorAll(".video").forEach((video) => {
+    video.addEventListener("click", () => {
+      const src = video.dataset.src;
+      playerVideo.src = src;
+      playerModal.style.display = "flex";
+      playerVideo.play();
+    });
+  });
+}
 
 const playerVideo = document.getElementById("playerVideo");
 const playerModal = document.getElementById("playerModal");
-const closePlayer = document.getElementById("closePlayer");
 
-document.querySelectorAll(".video").forEach((video) => {
-  video.addEventListener("click", () => {
-    const src = video.dataset.src;
-    playerVideo.src = src;
-    playerModal.style.display = "flex";
-    playerVideo.play();
-  });
-});
+loadVideos();
 
 function closeVideo() {
   playerModal.style.display = "none";
