@@ -14,7 +14,7 @@ We're making a video site similar to YouTube, with planned features being:
 
 # Features
 
-## Accounts
+### Accounts
 
 You can create an account using a username and password.
 
@@ -22,7 +22,7 @@ You can create an account using a username and password.
 - Passwords must be at least 6 characters
 - You need an account to post comments and upload videos
 
-## Uploading
+### Uploading
 
 If you have an account, you can upload videos.
 You may set the title, description and thumbnail.
@@ -30,11 +30,11 @@ You may set the title, description and thumbnail.
 Supported video file types are .mp4, .webm and .ogg
 Supported thumbnail file type are .png, .jpeg, .webp and .gif
 
-## Comments
+### Comments
 
 Users may comment under uploaded videos
 
-## Search
+### Search
 
 You can search through uploaded videos via the search bar at the top.
 
@@ -42,7 +42,7 @@ You can search through uploaded videos via the search bar at the top.
 
 # Planned features
 
-## Account page
+### Account page
 
 A separate page for every user where all of the user's videos are listed
 
