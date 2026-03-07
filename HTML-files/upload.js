@@ -57,3 +57,15 @@ async function uploadVideo() {
   console.log("Video uploaded:", data);
   alert("Video uploaded successfully!");
 }
+
+async function checkLogin() {
+  const response = await fetch("http://localhost:3000/me", {
+    credentials: "include",
+  });
+  if (!response.ok) {
+    alert("You must be logged in to upload!");
+    window.location.href = "login.html";
+  }
+}
+
+checkLogin();

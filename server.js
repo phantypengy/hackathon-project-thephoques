@@ -192,3 +192,41 @@ app.get("/me", (req, res) => {
     res.status(401).json({ error: "Not logged in." });
   }
 });
+
+app.get("/videos/:id", async (req, res) => {
+  const result = await pool.query(
+    "SELECT videos.*, users.username FROM videos JOIN users ON videos.user_id = users.id WHERE videos.id = $1",
+    [req.params.id],
+  );
+  res.json(result.rows[0]);
+});
+
+// fetch comments for a specific video
+app.get("/videos/:id/comments", async (req, res) => {
+  try {
+    const result = await pool.query(
+      "SELECT comments.*, users,username FROM comments JOIN users ON comments.user_id = users.id WHERE comments.video_id = $1 ORDER BY comments.created_at DESC",
+      [req.params.id],
+    );
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// post a comment
+app.post("/videos/:id/comments", async (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).json({ error: "You must be logged in to comment." });
+  }
+  const { content } = req.body;
+  try {
+    const result = await pool.query(
+      "INSERT INTO comments (video_id, user_id, content) VALUES ($1, $2, $3) RETURNING *",
+      [req.params.id, req.session.user.id, content],
+    );
+    res.json(result.rows[0]);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});

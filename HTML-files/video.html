@@ -1,0 +1,80 @@
+<!doctype html>
+<meta charset="UTF-8" />
+<html>
+  <head>
+    <title>Sealio - Watch</title>
+    <link rel="stylesheet" href="redesign.css" />
+    <link rel="stylesheet" href="video.css" />
+    <script src="shared.js" defer></script>
+    <script src="video.js" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="header-top">
+          <h1 class="title">Sealio</h1>
+        </div>
+        <div class="header-bottom">
+          <div class="navbar">
+            <div
+              class="button"
+              onclick="window.location.href = 'redesign.html'"
+            >
+              Home
+            </div>
+            <div class="button" onclick="window.location.href = 'login.html'">
+              Login
+            </div>
+            <div class="button">Saved</div>
+            <div
+              class="button"
+              onclick="window.location.href = 'upload.html'"
+              style="margin-right: 1px"
+            >
+              Upload
+            </div>
+            <div class="bar">
+              <marquee behavior="scroll" direction="left">
+                Welcome to Sealio!
+              </marquee>
+            </div>
+            <div id="navUsername" class="navUsername"></div>
+            <div class="button" onclick="logout()">Logout</div>
+          </div>
+        </div>
+      </header>
+      <div class="body">
+        <div class="videoPage">
+          <div class="videoPageLeft">
+            <video id="mainPlayer" controls></video>
+            <div class="videoInfoBox">
+              <h2 id="videoTitle"></h2>
+              <div class="videoMeta">
+                <span id="videoUploader"></span>
+                <span id="videoDate"></span>
+              </div>
+              <hr />
+              <p id="videoDescription"></p>
+            </div>
+            <div class="commentsSection">
+              <h3>Comments</h3>
+              <div class="commentForm">
+                <textarea
+                  id="commentInput"
+                  placeholder="Add a comment..."
+                  rows="2"
+                ></textarea>
+                <button onclick="postComment()">Post</button>
+              </div>
+              <div id="commentsList"></div>
+            </div>
+          </div>
+          <div class="videoPageRight">
+            <h3>Related Videos</h3>
+            <div id="relatedVideos"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

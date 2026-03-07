@@ -1,0 +1,204 @@
+.body {
+  display: block;
+}
+
+.videoPage {
+  background-color: #e8e8e8;
+  min-height: 100vh;
+  padding: 30px 20px;
+  padding-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.videoPageLeft {
+  flex: 1;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+}
+
+.videoPageRight {
+  width: 240px;
+  flex-shrink: 0;
+  font-family: Arial, sans-serif;
+}
+
+#mainPlayer {
+  width: 100%;
+  background-color: black;
+  display: block;
+  box-sizing: border-box;
+  border: 3px solid #1a1a1a;
+  border-bottom: none;
+}
+
+.videoInfoBox {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 12px;
+  border: 3px solid #1a1a1a;
+  border-top: none;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.videoInfoBox h2 {
+  font-size: 18px;
+  margin: 0 0 6px 0;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.videoMeta {
+  display: flex;
+  gap: 20px;
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.videoMeta span {
+  display: inline;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 8px 0;
+}
+
+#videoDescription {
+  color: #ccc;
+  line-height: 1.5;
+  margin: 0;
+  font-size: 13px;
+}
+
+.videoPageRight h3 {
+  font-size: 14px;
+  margin: 0 0 10px 0;
+  color: #333;
+  border-bottom: 2px solid #333;
+  padding-bottom: 4px;
+}
+
+.relatedVideo {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: #d0d0d0;
+  padding: 5px;
+  border: 1px solid #bbb;
+}
+
+.relatedVideo:hover {
+  background-color: #c0c0c0;
+}
+
+.relatedVideo img {
+  width: 120px;
+  height: 68px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.relatedInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.relatedTitle {
+  font-size: 12px;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin: 0 0 4px 0;
+}
+
+.relatedUploader {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+}
+
+.commentsSection {
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.commentsSection h3 {
+  font-size: 14px;
+  color: #333;
+  border-bottom: 2px solid #333;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.commentForm textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 13px;
+  border: 1px solid #bbb;
+  resize: vertical;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.commentForm button {
+  align-self: flex-end;
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.commentForm button:hover {
+  background-color: #333;
+}
+
+.comment {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.commentHeader {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.commentUsername {
+  font-weight: bold;
+  font-size: 12px;
+  color: #1a1a1a;
+}
+
+.commentDate {
+  font-size: 11px;
+  color: #888;
+}
+
+.commentContent {
+  font-size: 13px;
+  color: #333;
+  margin: 0;
+}
+
+.noComments {
+  font-size: 12px;
+  color: #888;
+}

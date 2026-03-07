@@ -1,5 +1,7 @@
 async function loadVideos() {
-  const response = await fetch("http://localhost:3000/videos");
+  const response = await fetch("http://localhost:3000/videos", {
+    credentials: "include",
+  });
   const videos = await response.json();
 
   for (let i = videos.length - 1; i > 0; i--) {
@@ -13,7 +15,7 @@ async function loadVideos() {
   videos.forEach((video) => {
     const videoEl = document.createElement("div");
     videoEl.classList.add("video");
-    videoEl.dataset.src = `http://localhost:3000${video.video_url}`;
+    videoEl.dataset.id = video.id;
     videoEl.innerHTML = `
             <div class="thumbnail">
                 <img src="http://localhost:3000${video.thumbnail_url}" alt="Video Thumbnail" />
@@ -23,21 +25,15 @@ async function loadVideos() {
                 <p class="channelName">${video.username}</p>
             </div>
         `;
+
+    videoEl.addEventListener("click", () => {
+      console.log("Clicking video id:", video.id);
+      window.location.href = `video.html?id=${video.id}`;
+    });
+
     videoGrid.appendChild(videoEl);
   });
-
-  document.querySelectorAll(".video").forEach((video) => {
-    video.addEventListener("click", () => {
-      const src = video.dataset.src;
-      playerVideo.src = src;
-      playerModal.style.display = "flex";
-      playerVideo.play();
-    });
-  });
 }
-
-const playerVideo = document.getElementById("playerVideo");
-const playerModal = document.getElementById("playerModal");
 
 loadVideos();
 
