@@ -258,8 +258,8 @@ app.post("/videos/:id/comments", async (req, res) => {
 app.post("/watch-later/:id", async (req, res) => {
   if (!req.session.user) {
     return res
-    .status(401)
-    .json({ error: "You must be logged in to save videos." });
+      .status(401)
+      .json({ error: "You must be logged in to save videos." });
   }
 
   try {
@@ -276,6 +276,62 @@ app.post("/watch-later/:id", async (req, res) => {
     if (err.code === "23505") {
       return res.status(400).json({ error: "Video already in Watch Later"});
     }
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// get all watch later videos for the logged-in user
+app.get("/watch-later", async (req, res) => {
+  if (!req.session.user) {
+    return res
+      .status(401)
+      .json({ error: "You must be logged in to view saved videos." });
+  }
+
+  try {
+    const result = await pool.query(
+      `SELECT 
+         watch_later.video_id,
+         watch_later.created_at AS saved_at,
+         videos.title,
+         videos.description,
+         videos.video_url,
+         videos.thumbnail_url,
+         users.username
+       FROM watch_later
+       JOIN videos ON watch_later.video_id = videos.id
+       JOIN users ON videos.user_id = users.id
+       WHERE watch_later.user_id = $1
+       ORDER BY watch_later.created_at DESC`,
+      [req.session.user.id],
+    );
+
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// remove a video from watch later for the logged-in user
+app.delete("/watch-later/:id", async (req, res) => {
+  if (!req.session.user) {
+    return res
+      .status(401)
+      .json({ error: "You must be logged in to remove saved videos." });
+  }
+
+  try {
+    const result = await pool.query(
+      "DELETE FROM watch_later WHERE user_id = $1 AND video_id = $2 RETURNING *",
+      [req.session.user.id, req.params.id],
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "Saved video not found." });
+    }
+
+    res.json({ message: "Video removed from Watch Later." });
+  } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });

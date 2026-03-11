@@ -285,6 +285,30 @@ marquee {
   font-size: 14px;
 }
 
+.removeWatchLaterBtn {
+  margin-top: 12px;
+  padding: 8px 12px;
+  width: 100%;
+  background: linear-gradient(to bottom, #2a2a2a, #161616);
+  color: #f2d16b;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.removeWatchLaterBtn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(242, 209, 107, 0.75);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.28);
+}
+
+.removeWatchLaterBtn:active {
+  transform: translateY(1px);
+}
+
 .playerModal {
   position: fixed;
   top: 0;
