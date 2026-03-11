@@ -23,4 +23,22 @@ async function loadUser() {
   }
 }
 
+async function updateAuthButton() {
+  const response = await fetch("/me", {
+    credentials: "include",
+  });
+  const authBtn = document.getElementById("authBtn");
+  if (!authBtn) return;
+
+  if (response.ok) {
+    authBtn.textContent = "Logout";
+    authBtn.onclick = logout;
+  } else {
+    authBtn.textContent = "Login";
+    authBtn.onclick = () => (window.location.href = "login.html");
+  }
+}
+
+updateAuthButton();
+
 loadUser();

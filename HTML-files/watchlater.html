@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sealio - Watch Later</title>
+
+    <link rel="stylesheet" href="redesign.css" />
+    <link rel="icon" href="assets/favicon.ico" />
+
+    <script src="shared.js" defer></script>
+    <script src="watchlater.js" defer></script>
+  </head>
+
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="header-top">
+          <div class="brandBlock">
+            <h1 class="title">Sealio</h1>
+            <p class="tagline">Classic streaming, timeless stories</p>
+          </div>
+        </div>
+
+        <div class="header-bottom">
+          <div class="navbar">
+            <div
+              class="button"
+              onclick="window.location.href = 'redesign.html'"
+            >
+              Home
+            </div>
+
+            <div
+              class="button"
+              onclick="window.location.href = 'watchlater.html'"
+            >
+              Watch Later
+            </div>
+
+            <div class="button" onclick="window.location.href = 'upload.html'">
+              Upload
+            </div>
+
+            <div class="bar">
+              <marquee behavior="scroll" direction="left">
+                Your saved videos
+              </marquee>
+            </div>
+
+            <div id="navUsername" class="navUsername"></div>
+            <div class="button" id="authBtn" onclick="logout()">Logout</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="body">
+        <div class="content">
+          <section class="librarySection">
+            <div class="sectionHeadingRow">
+              <h3 class="sectionHeading">Watch Later</h3>
+              <p class="sectionSubtext">Your saved videos</p>
+            </div>
+
+            <!-- shown if NOT logged in -->
+            <div id="loginRequired" class="emptyState" style="display: none">
+              <h3>Please log in</h3>
+              <p>You must log in to see your saved videos.</p>
+              <div class="button" onclick="window.location.href = 'login.html'">
+                Go to Login
+              </div>
+            </div>
+
+            <!-- video grid -->
+            <div class="videoGrid" id="watchLaterGrid"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

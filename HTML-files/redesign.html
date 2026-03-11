@@ -29,8 +29,11 @@
               Home
             </div>
 
-            <div class="button" onclick="window.location.href = 'login.html'">
-              Login
+            <div
+              class="button"
+              onclick="window.location.href = 'watchlater.html'"
+            >
+              Watch Later
             </div>
 
             <div class="button" onclick="window.location.href = 'upload.html'">
@@ -44,9 +47,9 @@
             </div>
 
             <div id="navUsername" class="navUsername"></div>
-            <div class="button" onclick="logout()">Logout</div>
+            <div class="button" id="authBtn" onclick="logout()">Logout</div>
             <div onclick="searchItems()" class="searchicon">&#128269;</div>
-            
+
             <input
               type="search"
               class="searchbar"
@@ -55,7 +58,6 @@
             />
           </div>
         </div>
-
       </header>
       <div class="body">
         <div class="content">
@@ -64,8 +66,8 @@
               <p class="heroEyebrow">SEALIO COLLECTION</p>
               <h2 class="heroHeading">Discover videos on Sealio</h2>
               <p class="heroDescription">
-                Browse through users' uploads, build your own watch list 
-                in a streaming space inspired by the golden era of online videos.
+                Browse through users' uploads, build your own watch list in a
+                streaming space inspired by the golden era of online videos.
               </p>
             </div>
           </section>
@@ -78,75 +80,75 @@
 
             <div class="videoGrid">
               <div class="video">
-              <div class="thumbnail">
-                <img src="" alt="Video Thumbnail" />
+                <div class="thumbnail">
+                  <img src="" alt="Video Thumbnail" />
+                </div>
+                <div class="videoInfo">
+                  <h4 class="videoTitle"></h4>
+                  <p class="channelName"></p>
+                </div>
               </div>
-              <div class="videoInfo">
-                <h4 class="videoTitle"></h4>
-                <p class="channelName"></p>
-              </div>
-            </div>
 
-            <div class="video">
-              <div class="thumbnail">
-                <img src="" alt="Video Thumbnail" />
+              <div class="video">
+                <div class="thumbnail">
+                  <img src="" alt="Video Thumbnail" />
+                </div>
+                <div class="videoInfo">
+                  <h4 class="videoTitle"></h4>
+                  <p class="channelName"></p>
+                </div>
               </div>
-              <div class="videoInfo">
-                <h4 class="videoTitle"></h4>
-                <p class="channelName"></p>
-              </div>
-            </div>
 
-            <div class="video">
-              <div class="thumbnail">
-                <img src="" alt="Video Thumbnail" />
+              <div class="video">
+                <div class="thumbnail">
+                  <img src="" alt="Video Thumbnail" />
+                </div>
+                <div class="videoInfo">
+                  <h4 class="videoTitle"></h4>
+                  <p class="channelName"></p>
+                </div>
               </div>
-              <div class="videoInfo">
-                <h4 class="videoTitle"></h4>
-                <p class="channelName"></p>
-              </div>
-            </div>
 
-            <div class="video">
-              <div class="thumbnail">
-                <img src="" alt="Video Thumbnail" />
+              <div class="video">
+                <div class="thumbnail">
+                  <img src="" alt="Video Thumbnail" />
+                </div>
+                <div class="videoInfo">
+                  <h4 class="videoTitle"></h4>
+                  <p class="channelName"></p>
+                </div>
               </div>
-              <div class="videoInfo">
-                <h4 class="videoTitle"></h4>
-                <p class="channelName"></p>
-              </div>
-            </div>
 
-            <div class="video">
-              <div class="thumbnail">
-                <img src="" alt="Video Thumbnail" />
+              <div class="video">
+                <div class="thumbnail">
+                  <img src="" alt="Video Thumbnail" />
+                </div>
+                <div class="videoInfo">
+                  <h4 class="videoTitle"></h4>
+                  <p class="channelName"></p>
+                </div>
               </div>
-              <div class="videoInfo">
-                <h4 class="videoTitle"></h4>
-                <p class="channelName"></p>
-              </div>
-            </div>
 
-            <div class="video">
-              <div class="thumbnail">
-                <img src="" alt="Video Thumbnail" />
-              </div>
-              <div class="videoInfo">
-                <h4 class="videoTitle"></h4>
-                <p class="channelName"></p>
+              <div class="video">
+                <div class="thumbnail">
+                  <img src="" alt="Video Thumbnail" />
+                </div>
+                <div class="videoInfo">
+                  <h4 class="videoTitle"></h4>
+                  <p class="channelName"></p>
+                </div>
               </div>
             </div>
-          </div>    
-        </section>
+          </section>
+        </div>
       </div>
-    </div>
 
-    <div id="playerModal" class="playerModal">
-      <div class="modalBackground">
-        <video id="playerVideo" controls></video>
-        <button id="closePlayer" onclick="closeVideo()">x</button>
+      <div id="playerModal" class="playerModal">
+        <div class="modalBackground">
+          <video id="playerVideo" controls></video>
+          <button id="closePlayer" onclick="closeVideo()">x</button>
+        </div>
       </div>
-    </div>
     </div>
   </body>
 </html>

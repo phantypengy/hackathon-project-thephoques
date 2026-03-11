@@ -29,8 +29,11 @@
               Home
             </div>
 
-            <div class="button" onclick="window.location.href = 'login.html'">
-              Login
+            <div
+              class="button"
+              onclick="window.location.href = 'watchlater.html'"
+            >
+              Watch Later
             </div>
 
             <div class="button" onclick="window.location.href = 'upload.html'">
@@ -44,7 +47,7 @@
             </div>
 
             <div id="navUsername" class="navUsername"></div>
-            <div class="button" onclick="logout()">Logout</div>
+            <div class="button" onclick="logout()">Login</div>
           </div>
         </div>
       </header>
@@ -76,7 +79,11 @@
               <!-- ▼ UPDATED LOGIN FORM START -->
               <div id="loginForm" class="authForm">
                 <label for="loginUsername">Username</label>
-                <input type="text" id="loginUsername" placeholder="Enter your username" />
+                <input
+                  type="text"
+                  id="loginUsername"
+                  placeholder="Enter your username"
+                />
 
                 <label for="loginPassword">Password</label>
                 <input
@@ -94,7 +101,11 @@
               <!-- ▼ UPDATED SIGNUP FORM START -->
               <div id="signupForm" class="authForm" style="display: none">
                 <label for="signupUsername">Username</label>
-                <input type="text" id="signupUsername" placeholder="Choose a username" />
+                <input
+                  type="text"
+                  id="signupUsername"
+                  placeholder="Choose a username"
+                />
 
                 <label for="signupPassword">Password</label>
                 <input
@@ -112,7 +123,9 @@
 
                 <p id="signupError" class="errorText"></p>
 
-                <button class="authActionBtn" onclick="signup()">Create account</button>
+                <button class="authActionBtn" onclick="signup()">
+                  Create account
+                </button>
               </div>
               <!-- ▲ UPDATED SIGNUP FORM END -->
             </div>
