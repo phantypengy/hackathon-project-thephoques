@@ -45,7 +45,6 @@ async function uploadVideo() {
   formData.append("thumbnail", thumbnailFile);
   formData.append("title", document.querySelector("#title").value);
   formData.append("description", document.querySelector("#description").value);
-  formData.append("user_id", 1);
 
   const response = await fetch("/upload", {
     method: "POST",
@@ -59,8 +58,7 @@ async function uploadVideo() {
     alert("Video uploaded successfully!");
     window.location.href = "redesign.html";
   } else {
-    const data = await response.json();
-    alert(data.error);
+    alert(data.error || "Upload failed");
   }
 }
 

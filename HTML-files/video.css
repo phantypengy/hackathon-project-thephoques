@@ -202,3 +202,35 @@ hr {
   font-size: 12px;
   color: #888;
 }
+
+.watchLaterRow {
+  margin: 14px 0 10px 0;
+}
+
+.watchLaterBtn {
+  background: linear-gradient(to bottom, #f4d27a, #c89b2c);
+  color: #2b1d00;
+  border: 1px solid #8a6a1f;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.watchLaterBtn:hover {
+  background: linear-gradient(to bottom, #ffd86f, #d6a42d);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.watchLaterBtn:active {
+  transform: translateY(1px);
+}
+
+.watchLaterBtn.saved {
+  background: linear-gradient(to bottom, #e7e0c8, #c8b98a);
+  color: #4d3a0a;
+  border: 1px solid #9c8750;
+}

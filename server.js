@@ -228,7 +228,7 @@ app.get("/videos/:id", async (req, res) => {
 app.get("/videos/:id/comments", async (req, res) => {
   try {
     const result = await pool.query(
-      "SELECT comments.*, users,username FROM comments JOIN users ON comments.user_id = users.id WHERE comments.video_id = $1 ORDER BY comments.created_at DESC",
+      "SELECT comments.*, users.username FROM comments JOIN users ON comments.user_id = users.id WHERE comments.video_id = $1 ORDER BY comments.created_at DESC",
       [req.params.id],
     );
     res.json(result.rows);
@@ -254,13 +254,39 @@ app.post("/videos/:id/comments", async (req, res) => {
   }
 });
 
+// add video to watch later
+app.post("/watch-later/:id", async (req, res) => {
+  if (!req.session.user) {
+    return res
+    .status(401)
+    .json({ error: "You must be logged in to save videos." });
+  }
+
+  try {
+    const result = await pool.query(
+      "INSERT INTO watch_later (user_id, video_id) VALUES ($1, $2) RETURNING *",
+      [req.session.user.id, req.params.id], 
+    );
+
+    res.json({
+      message: "Video saved to Watch Later",
+      item: result.rows[0],
+    });
+  } catch (err) {
+    if (err.code === "23505") {
+      return res.status(400).json({ error: "Video already in Watch Later"});
+    }
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // search
 app.get("/search", async (req, res) => {
   const { q } = req.query;
   const param = `%${q}%`;
   try {
     const result = await pool.query(
-      "SELECT * FROM videos WHERE LOWER(title) LIKE LOWER($1)",
+      "SELECT videos.*, users.username FROM videos JOIN users ON videos.user_id = users.id WHERE LOWER(videos.title) LIKE LOWER($1) ORDER BY videos.created_at DESC",
       [param],
     );
     res.json(result.rows);
