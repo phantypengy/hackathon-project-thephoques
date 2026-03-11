@@ -1,19 +1,25 @@
 <!doctype html>
-<meta charset="UTF-8" />
-<link rel="stylesheet" href="redesign.css" />
-<link rel="icon" href="assets/favicon.ico" />
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sealio - Home</title>
+    <link rel="stylesheet" href="redesign.css" />
+    <link rel="icon" href="assets/favicon.ico" />
     <script src="redesign.js" defer></script>
     <script src="shared.js" defer></script>
   </head>
+
   <body>
     <div class="app">
       <header class="header">
         <div class="header-top">
-          <h1 class="title">Sealio</h1>
+          <div class="brandBlock">
+            <h1 class="title">Sealio</h1>
+            <p class="tagline">Classic streaming, timeless stories</p>
+          </div>
         </div>
+
         <div class="header-bottom">
           <div class="navbar">
             <div
@@ -22,36 +28,65 @@
             >
               Home
             </div>
+
             <div class="button" onclick="window.location.href = 'login.html'">
               Login
             </div>
-            <div
-              class="button"
-              onclick="window.location.href = 'upload.html'"
-              style="margin-right: 1px"
-            >
+
+            <div class="button" onclick="window.location.href = 'upload.html'">
               Upload
             </div>
+
             <div class="bar">
               <marquee behavior="scroll" direction="left">
                 Welcome to Sealio!
               </marquee>
             </div>
+
             <div id="navUsername" class="navUsername"></div>
             <div class="button" onclick="logout()">Logout</div>
             <div onclick="searchItems()" class="searchicon">&#128269;</div>
+            
             <input
               type="search"
               class="searchbar"
-              placeholder="Search..."
+              placeholder="Search videos..."
               onkeydown="if (event.key == 'Enter') searchItems();"
             />
           </div>
         </div>
+
       </header>
       <div class="body">
         <div class="content">
-          <div class="videoGrid">
+          <section class="heroBanner">
+            <div class="heroText">
+              <p class="heroEyebrow">SEALIO COLLECTION</p>
+              <h2 class="heroHeading">Discover videos on Sealio</h2>
+              <p class="heroDescription">
+                Browse through users' uploads, build your own watch list 
+                in a streaming space inspired by the golden era of online videos.
+              </p>
+            </div>
+          </section>
+
+          <section class="librarySection">
+            <div class="sectionHeadingRow">
+              <h3 class="sectionHeading">Featured Archive</h3>
+              <p class="sectionSubtext">Explore recently uploaded videos</p>
+            </div>
+
+            <div class="videoGrid">
+              <div class="video">
+              <div class="thumbnail">
+                <img src="" alt="Video Thumbnail" />
+              </div>
+              <div class="videoInfo">
+                <h4 class="videoTitle"></h4>
+                <p class="channelName"></p>
+              </div>
+            </div>
+
             <div class="video">
               <div class="thumbnail">
                 <img src="" alt="Video Thumbnail" />
@@ -61,6 +96,7 @@
                 <p class="channelName"></p>
               </div>
             </div>
+
             <div class="video">
               <div class="thumbnail">
                 <img src="" alt="Video Thumbnail" />
@@ -70,6 +106,7 @@
                 <p class="channelName"></p>
               </div>
             </div>
+
             <div class="video">
               <div class="thumbnail">
                 <img src="" alt="Video Thumbnail" />
@@ -79,6 +116,7 @@
                 <p class="channelName"></p>
               </div>
             </div>
+
             <div class="video">
               <div class="thumbnail">
                 <img src="" alt="Video Thumbnail" />
@@ -88,6 +126,7 @@
                 <p class="channelName"></p>
               </div>
             </div>
+
             <div class="video">
               <div class="thumbnail">
                 <img src="" alt="Video Thumbnail" />
@@ -97,24 +136,17 @@
                 <p class="channelName"></p>
               </div>
             </div>
-            <div class="video">
-              <div class="thumbnail">
-                <img src="" alt="Video Thumbnail" />
-              </div>
-              <div class="videoInfo">
-                <h4 class="videoTitle"></h4>
-                <p class="channelName"></p>
-              </div>
-            </div>
-          </div>
-        </div>
+          </div>    
+        </section>
       </div>
     </div>
+
     <div id="playerModal" class="playerModal">
       <div class="modalBackground">
         <video id="playerVideo" controls></video>
         <button id="closePlayer" onclick="closeVideo()">x</button>
       </div>
+    </div>
     </div>
   </body>
 </html>

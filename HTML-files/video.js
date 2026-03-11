@@ -24,7 +24,6 @@ async function loadVideo() {
   console.log("Video data:", video);
 
   document.title = `Sealio - ${video.title}`;
-  document.getElementById("mainPlayer").src = `${video.video_url}`;
   const player = document.getElementById("mainPlayer");
   player.src = `${video.video_url}`;
   player.play();
@@ -36,6 +35,31 @@ async function loadVideo() {
   ).toLocaleDateString();
   document.getElementById("videoDescription").textContent =
     video.description || "No description.";
+
+  const watchLaterBtn = document.getElementById("watchLaterBtn");
+
+  if (watchLaterBtn) {
+    watchLaterBtn.addEventListener("click", async () => {
+      try {
+        const response = await fetch(`/watch-later/${id}`, {
+          method: "POST",
+          credentials: "include",
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          watchLaterBtn.textContent = "Saved to Watch Later";
+          watchLaterBtn.classList.add("saved");
+        } else {
+          alert(data.error || "Failed to save video");
+        }
+      } catch (err) {
+        console.error("Watch Later error:", err);
+        alert("Server error");
+      }
+    });
+  }
 
   await loadRelated(parseInt(id));
   await loadComments(parseInt(id));
@@ -58,6 +82,7 @@ async function loadRelated(currentId) {
 
   const related = others.slice(0, 5);
   const container = document.getElementById("relatedVideos");
+  container.innerHTML = "";
 
   related.forEach((video) => {
     const el = document.createElement("div");
