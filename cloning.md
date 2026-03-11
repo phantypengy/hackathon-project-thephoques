@@ -53,15 +53,15 @@ This will automatically install all dependencies and create a folder called node
 
 ### Linux
 ```bash
-sudo -i -u postgres psql -c "CREATE USER <yourusername> WITH SUPERUSER;"
+sudo -i -u postgres psql -c "CREATE USER yourusername WITH SUPERUSER;"
 ```
 
 ### MacOS
 ```bash
-psql postgres -c "CREATE USER <yourusername> WITH SUPERUSER;"
+psql postgres -c "CREATE USER yourusername WITH SUPERUSER;"
 ```
 
-In both, replace <yourusername> with your system username
+In both, replace yourusername with your system username
 
 ## Step 5: Setup the databse
 In terminal, navigate to repo-folder/SQL/
