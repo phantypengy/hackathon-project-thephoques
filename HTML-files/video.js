@@ -63,6 +63,7 @@ async function loadVideo() {
 
   await loadRelated(parseInt(id));
   await loadComments(parseInt(id));
+  await checkWatchLater(parseInt(id));
 }
 
 loadVideo();
@@ -148,5 +149,16 @@ async function postComment() {
   } else {
     const data = await response.json();
     alert(data.error);
+  }
+}
+
+async function checkWatchLater(id) {
+  const response = await fetch(`/watch-later/${id}`, {
+    credentials: "include",
+  });
+  const data = await response.json();
+  if (data.saved) {
+    watchLaterBtn.textContent = "Saved to Watch Later";
+    watchLaterBtn.classList.add("saved");
   }
 }
