@@ -15,7 +15,10 @@ async function loadVideos() {
       [videos[i], videos[j]] = [videos[j], videos[i]];
     }
 
-    updateSectionHeader("Featured Archive", "Explore recently uploaded videos");
+    updateSectionHeader(
+      "Featured Videos",
+      "Explore the collection of videos on Sealio",
+    );
     renderVideos(videos, "No videos available yet.");
   } catch (error) {
     console.error("Load videos error:", error);
@@ -80,15 +83,6 @@ function updateSectionHeader(title, subtext) {
 
 loadVideos();
 
-function closeVideo() {
-  const playerModal = document.getElementById("playerModal");
-  const playerVideo = document.getElementById("playerVideo");
-
-  playerModal.style.display = "none";
-  playerVideo.pause();
-  playerVideo.src = "";
-}
-
 async function searchItems() {
   const query = document.querySelector(".searchbar").value.trim();
   console.log("Searching for:", query);
@@ -109,10 +103,7 @@ async function searchItems() {
 
     const videos = await response.json();
 
-    updateSectionHeader(
-      `Search Results`,
-      `Showing results for "${query}"`
-    );
+    updateSectionHeader(`Search Results`, `Showing results for "${query}"`);
 
     renderVideos(videos, `No videos found for "${query}".`);
   } catch (error) {
