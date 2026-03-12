@@ -11,6 +11,11 @@ body {
 * {
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: silenthillf;
+  src: url(assets/fonts/AveriaLibre-Regular.ttf);
+}
 .app {
   width: 100%;
   min-height: 100vh;
@@ -41,6 +46,7 @@ body {
 }
 
 .title {
+  font-family: silenthillf;
   margin: 0;
   font-size: 38px;
   font-weight: 900;
