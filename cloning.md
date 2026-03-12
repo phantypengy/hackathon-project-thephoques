@@ -81,8 +81,3 @@ psql -d sealio_database -f main.sql
 
 ## Step 6: Create uploads folder
 In the repo's root dir, create a folder called "uploads" with two folders inside of it called "videos" and "thumbnails".
-
-# Windows
-
-Windows setup differs from Linux and Mac. Full Windows guide coming soon.
-In the meantime refer to the official PostgreSQL documentation at https://postgresql.org/docs
