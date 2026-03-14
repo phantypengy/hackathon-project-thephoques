@@ -10,6 +10,10 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, "HTML-files")));
 
+app.get("/", (req, res) => {
+  res.redirect("/redesign.html");
+});
+
 app.use(
   cors({
     origin: true,
