@@ -36,7 +36,15 @@ body {
 
 .header-top {
   width: 100%;
-  padding: 18px 28px 12px 28px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#headerSeal {
+  height: 50px;
+  width: auto;
 }
 
 .brandBlock {
@@ -496,4 +504,31 @@ marquee {
   .thumbnail {
     height: 160px;
   }
+}
+
+.authActionBtn {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;
+  padding: 10px 16px;
+  background: linear-gradient(to bottom, #f2d16b, #c89b2c);
+  color: #111111;
+  border: 1px solid #8a6a1f;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.authActionBtn:hover {
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
 }

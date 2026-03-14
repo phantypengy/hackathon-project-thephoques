@@ -14,6 +14,7 @@
     <div class="app">
       <header class="header">
         <div class="header-top">
+          <img id="headerSeal" src="assets/seal.png" alt="Seal" />
           <h1 class="title">Sealio</h1>
         </div>
         <div class="header-bottom">
@@ -63,6 +64,14 @@
               <div class="videoMeta">
                 <span id="videoUploader"></span>
                 <span id="videoDate"></span>
+              </div>
+              <div class="likeButtons">
+                <button id="likeBtn" onclick="vote('like')">
+                  👍 <span id="likeCount">0</span>
+                </button>
+                <button id="dislikeBtn" onclick="vote('dislike')">
+                  👎 <span id="dislikeCount">0</span>
+                </button>
               </div>
               <div class="watchLaterRow">
                 <button id="watchLaterBtn" class="watchLaterBtn">

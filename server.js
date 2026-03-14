@@ -172,8 +172,10 @@ app.post("/login", async (req, res) => {
 
 // logout
 app.post("/logout", (req, res) => {
-  req.session.destroy();
-  res.json({ message: "Logged out." });
+  req.session.destroy((err) => {
+    res.clearCookie("connect.sid");
+    res.json({ message: "Logged out" });
+  });
 });
 
 // check who is logged in
@@ -255,8 +257,12 @@ app.delete("/videos/:id", async (req, res) => {
         .json({ error: "Video not found or you do not own it." });
     }
 
-    await pool.query("DELETE FROM comments WHERE video_id = $1", [req.params.id]);
-    await pool.query("DELETE FROM watch_later WHERE video_id = $1", [req.params.id]);
+    await pool.query("DELETE FROM comments WHERE video_id = $1", [
+      req.params.id,
+    ]);
+    await pool.query("DELETE FROM watch_later WHERE video_id = $1", [
+      req.params.id,
+    ]);
     await pool.query("DELETE FROM videos WHERE id = $1 AND user_id = $2", [
       req.params.id,
       req.session.user.id,
@@ -419,4 +425,61 @@ app.get("/search", async (req, res) => {
 
 app.listen(3000, () => {
   console.log("Server running on port 3000");
+});
+
+// likes / dislikes
+app.post("/videos/:id/like", async (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).json({ error: "You must be logged in" });
+  }
+  const { type } = req.body;
+  try {
+    const existing = await pool.query(
+      "SELECT type FROM likes WHERE user_id = $1 AND video_id = $2",
+      [req.session.user.id, req.params.id],
+    );
+
+    if (existing.rows.length > 0 && existing.rows[0].type === type) {
+      // Same button clicked again - remove the vote
+      await pool.query(
+        "DELETE FROM likes WHERE user_id = $1 AND video_id = $2",
+        [req.session.user.id, req.params.id],
+      );
+    } else {
+      // New vote or switching vote
+      await pool.query(
+        "INSERT INTO likes (user_id, video_id, type) VALUES ($1, $2, $3) ON CONFLICT (user_id, video_id) DO UPDATE SET type = $3",
+        [req.session.user.id, req.params.id, type],
+      );
+    }
+
+    const counts = await pool.query(
+      "SELECT type, COUNT(*) FROM likes WHERE video_id = $1 GROUP BY type",
+      [req.params.id],
+    );
+    res.json(counts.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// fetch likes + dislikes for a video
+app.get("/videos/:id/likes", async (req, res) => {
+  try {
+    const counts = await pool.query(
+      "SELECT type, COUNT(*) FROM likes WHERE video_id = $1 GROUP BY type",
+      [req.params.id],
+    );
+    let userVote = null;
+    if (req.session.user) {
+      const vote = await pool.query(
+        "SELECT type FROM likes WHERE user_id = $1 AND video_id = $2",
+        [req.session.user.id, req.params.id],
+      );
+      if (vote.rows.length > 0) userVote = vote.rows[0].type;
+    }
+    res.json({ counts: counts.rows, userVote });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });

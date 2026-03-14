@@ -27,6 +27,7 @@ async function updateAuthButton() {
   const response = await fetch("/me", {
     credentials: "include",
   });
+  console.log("/me status:", response.status);
   const authBtn = document.getElementById("authBtn");
   if (!authBtn) return;
 

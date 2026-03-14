@@ -64,6 +64,7 @@ async function loadVideo() {
   await loadRelated(parseInt(id));
   await loadComments(parseInt(id));
   await checkWatchLater(parseInt(id));
+  await loadLikes(parseInt(id));
 }
 
 loadVideo();
@@ -160,5 +161,53 @@ async function checkWatchLater(id) {
   if (data.saved) {
     watchLaterBtn.textContent = "Saved to Watch Later";
     watchLaterBtn.classList.add("saved");
+  }
+}
+
+async function loadLikes(videoId) {
+  const response = await fetch(`/videos/${videoId}/likes`, {
+    credentials: "include",
+  });
+  const data = await response.json();
+
+  let likes = 0,
+    dislikes = 0;
+  data.counts.forEach((row) => {
+    if (row.type === "like") likes = row.count;
+    if (row.type === "dislike") dislikes = row.count;
+  });
+
+  document.getElementById("likeCount").textContent = likes;
+  document.getElementById("dislikeCount").textContent = dislikes;
+
+  // Always clear both first
+  document.getElementById("likeBtn").classList.remove("voted");
+  document.getElementById("dislikeBtn").classList.remove("voted");
+
+  // Then apply based on what the server says
+  if (data.userVote === "like") {
+    document.getElementById("likeBtn").classList.add("voted");
+  } else if (data.userVote === "dislike") {
+    document.getElementById("dislikeBtn").classList.add("voted");
+  }
+  console.log(data.userVote);
+}
+
+async function vote(type) {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+
+  const response = await fetch(`/videos/${id}/like`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ type }),
+  });
+
+  if (response.ok) {
+    loadLikes(parseInt(id));
+  } else {
+    const data = await response.json();
+    alert(data.error);
   }
 }
