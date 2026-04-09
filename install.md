@@ -94,5 +94,5 @@ Now, create the tables:
 psql -d sealio_database -f main.sql
 ```
 
-## Step 6: Create uploads folder **IMPORTANT**
+## Step 6: Create uploads folder (IMPORTANT)
 In the repo's root dir, create a folder called "uploads" with two folders inside of it called "videos" and "thumbnails".
