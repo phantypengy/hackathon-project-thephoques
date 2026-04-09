@@ -10,6 +10,10 @@ Web server 3: Audio/Video streaming server
 
 We're making a video site similar to YouTube!!!
 
+# Installation
+
+See install.md
+
 # Features
 
 ### Accounts
@@ -83,7 +87,3 @@ A relational database system that stores all data in tables - handles accounts, 
 ### node-postgres (pg)
 
 Allows Node.js to talk to PostgreSQL
-
-# Note for cloning this repo
-
-See cloning.md
