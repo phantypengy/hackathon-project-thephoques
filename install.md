@@ -96,3 +96,12 @@ psql -d sealio_database -f main.sql
 
 ## Step 6: Create uploads folder (IMPORTANT)
 In the repo's root dir, create a folder called "uploads" with two folders inside of it called "videos" and "thumbnails".
+
+## Step 7: Start server
+In the root directory of the repo (where server.js is located), run:
+
+```bash
+node server.js
+```
+
+Now the website should be running at localhost:3000.
