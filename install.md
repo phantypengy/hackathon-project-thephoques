@@ -2,15 +2,27 @@
 
 ## Step 1: Installing dependencies
 
+Clone the repo:
+
+```bash
+git clone https://github.com/phantypengy/hackathon-project-sealio
+```
+
 After cloning the repo make sure you have Node.js, npm and PostgreSQL installed;
 
-### Linux (Ubuntu / Debian)
+### Debian-based Linux Distributions (+ Ubuntu)
 
 ```bash
 sudo apt install nodejs npm
 sudo apt install postgresql
 ```
-if you're on arch you know what to do i'm not explaining to you
+
+### Arch-based Linux Distributions
+
+```bash
+sudo pacman -S nodejs npm
+sudo pacman -S postgresql
+```
 
 ### MacOS
 
@@ -32,7 +44,9 @@ sudo systemctl start postgresql
 ```bash
 brew services start postgresql@18
 ```
+
 **NOTE:** your version of postgres might be different, you can check version with this command:
+
 ```bash
 psql -V
 # This will return something like this example:
@@ -41,6 +55,7 @@ psql (PostgreSQL) 18.3 (Homebrew)
 ```
 
 ## Step 3: Install node dependencies
+
 In your terminal, navigate to the repo's folder and enter this command:
 
 ```bash
@@ -79,5 +94,5 @@ Now, create the tables:
 psql -d sealio_database -f main.sql
 ```
 
-## Step 6: Create uploads folder
+## Step 6: Create uploads folder **IMPORTANT**
 In the repo's root dir, create a folder called "uploads" with two folders inside of it called "videos" and "thumbnails".
